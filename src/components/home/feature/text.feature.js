@@ -2,6 +2,7 @@ import React from "react";
 import { easePolyOut } from "d3-ease";
 import Animate from "react-move/Animate";
 import FeaturedPlayer from "../../../assets/images/featured_player.png";
+import Fade from "react-reveal/Fade";
 
 class TextFeature extends React.Component {
   animateNumber = () => (
@@ -17,14 +18,13 @@ class TextFeature extends React.Component {
         timing: { duration: 1000, ease: easePolyOut },
       }}
     >
-      {(opacity) => {
-        // console.log("opacity", opacity, "rotate", opacity.rotate);
+      {({ opacity, rotate }) => {
         return (
           <div
             className="featured_number"
             style={{
               opacity,
-              transform: `translate(260px, 20px) rotateY(${opacity.rotate}deg)`,
+              transform: `translate(260px,170px) rotateY(${rotate}deg)`,
             }}
           >
             3
@@ -40,23 +40,22 @@ class TextFeature extends React.Component {
       start={{
         opacity: 0,
         x: 503,
-        y: 300,
+        y: 450,
       }}
       enter={{
         opacity: [1],
         x: [273],
-        y: [300],
+        y: [450],
         timing: { duration: 500, ease: easePolyOut },
       }}
     >
-      {(opacity, x, y) => {
-        // console.log("opacity", opacity, "rotate", opacity.rotate);
+      {({ opacity, x, y }) => {
         return (
           <div
             className="featured_first"
             style={{
               opacity,
-              transform: `translate(${opacity.x}px, ${opacity.y}px)`,
+              transform: `translate(${x}px,${y}px)`,
             }}
           >
             League
@@ -72,22 +71,22 @@ class TextFeature extends React.Component {
       start={{
         opacity: 0,
         x: 503,
-        y: 420,
+        y: 586,
       }}
       enter={{
         opacity: [1],
         x: [273],
-        y: [420],
-        timing: { delay: 200, duration: 500, ease: easePolyOut },
+        y: [586],
+        timing: { delay: 300, duration: 500, ease: easePolyOut },
       }}
     >
-      {(opacity, x, y) => {
+      {({ opacity, x, y }) => {
         return (
           <div
             className="featured_second"
             style={{
               opacity,
-              transform: `translate(${opacity.x}px, ${opacity.y}px)`,
+              transform: `translate(${x}px,${y}px)`,
             }}
           >
             Championships
@@ -108,14 +107,14 @@ class TextFeature extends React.Component {
         timing: { delay: 800, duration: 500, ease: easePolyOut },
       }}
     >
-      {(opacity) => {
+      {({ opacity }) => {
         return (
           <div
             className="featured_player"
             style={{
-              opacity: { opacity },
+              opacity,
               background: `url(${FeaturedPlayer})`,
-              transform: `translate(600px, 65px)`,
+              transform: `translate(550px,201px)`,
             }}
           ></div>
         );
